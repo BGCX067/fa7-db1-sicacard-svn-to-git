@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+<h:head>
+	<h:outputStylesheet library="css" name="style.css"  />
+	<title>Home</title>
+</h:head>
+
+<h:body>
+	<div id="page">
+		<div id="menu">
+			<h:form>
+				<rich:toolbar height="26px">
+					<rich:dropDownMenu mode="ajax">
+						<f:facet name="label">
+							<h:panelGroup>
+								<h:outputText value="Cliente" />
+							</h:panelGroup>
+						</f:facet>
+						<rich:menuItem submitMode="ajax" value="Cadastro" >
+							<h:commandLink action="cadastroCliente"><h:outputText value="Cadastro" /></h:commandLink> 
+						</rich:menuItem>
+						<rich:menuItem submitMode="ajax" value="Consulta" action="#" >
+							<h:commandLink action="listagemCliente"><h:outputText value="Consulta" /></h:commandLink> 
+						</rich:menuItem>
+					</rich:dropDownMenu>
+
+					<rich:dropDownMenu mode="ajax">
+						<f:facet name="label">
+							<h:panelGroup>
+								<h:outputText value="Posto" />
+							</h:panelGroup>
+						</f:facet>
+						<rich:menuItem submitMode="ajax" value="Cadastro" >
+							<h:commandLink action="cadastroPosto"><h:outputText value="Cadastro" /></h:commandLink> 
+						</rich:menuItem>
+						<rich:menuItem submitMode="ajax" value="Consulta" >
+							<h:commandLink action="listagemPosto"><h:outputText value="Consulta" /></h:commandLink> 
+						</rich:menuItem>
+					</rich:dropDownMenu>
+
+					<rich:dropDownMenu mode="ajax">
+						<f:facet name="label">
+							<h:panelGroup>
+								<h:outputText value="Abastecimento" />
+							</h:panelGroup>
+						</f:facet>
+						<rich:menuItem submitMode="ajax" value="Registrar" >
+							<h:commandLink action="abastecer"><h:outputText value="Registrar" /></h:commandLink> 
+						</rich:menuItem>
+					</rich:dropDownMenu>
+				</rich:toolbar>
+			</h:form>
+
+		</div>
+
+		<div id="conteudo">
+			<h:messages globalOnly="true" />
+			<ui:insert name="conteudo" />
+
+		</div>
+
+	</div>
+</h:body>
+</html>

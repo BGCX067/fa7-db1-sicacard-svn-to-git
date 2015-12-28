@@ -1,0 +1,9 @@
+<Context docBase="Estoque" path="/Estoque"
+  reloadable="true" source="org.eclipse.jst.j2ee.server:Estoque" >
+
+  <Resource name="jdbc/ds-sica-card" auth="Container"
+			type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
+			url="jdbc:postgresql:agendaOnline"
+			username="postgres" password="postgres" maxActive="20" maxIdle="10" maxWait="-1"/>
+
+</Context>

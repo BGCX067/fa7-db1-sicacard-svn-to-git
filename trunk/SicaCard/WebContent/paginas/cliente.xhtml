@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+<h:head>
+	<title>Cadastro de Cliente</title>
+</h:head>
+
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="conteudo">
+		<a4j:jsFunction name="trocarTipoPessoa" action="#{clienteController.trocaTipoPessoa()}"
+			render="painelPrincipal" execute="@this" />
+
+		<h:outputText value="Cadastro de Cliente"></h:outputText>
+		<br />
+		<br />
+		<h:form>
+			<div>
+				<h:selectOneRadio value="#{clienteController.flgPessoaFisica}"
+					required="true" onchange="trocarTipoPessoa();">
+					<f:selectItem itemValue="true" itemLabel="Pessoa Física" />
+					<f:selectItem itemValue="false" itemLabel="Pessoa Jurídica" />
+				</h:selectOneRadio>
+			</div>
+			<a4j:outputPanel id="painelPrincipal">
+
+
+				<!-- Pessoa Fisica -->
+				<a4j:outputPanel id="painelPessoaFisica"
+					rendered="#{clienteController.flgPessoaFisica}">
+					<div>
+						<h:outputLabel value="CPF" />
+						<h:inputText id="cpf" value="#{clienteController.clientePf.cpf}"
+							required="true">
+							<f:converter converterId="javax.faces.BigInteger" />
+						</h:inputText>
+					</div>
+
+					<div>
+						<h:outputLabel value="Nome" />
+						<h:inputText value="#{clienteController.clientePf.nome}"
+							required="true"  id="nome" />
+					</div>
+					
+					<div>
+						<h:outputLabel value="CNH" />
+						<h:inputText value="#{clienteController.clientePf.numeroCNH}"
+							required="true"  id="cnh" />
+					</div>
+
+					<div>
+						<h:outputLabel value="Endereço" />
+						<h:inputText value="#{clienteController.clientePf.endereco}" required="true" id="enderecoPF"/>
+					</div>
+					
+					<div>
+						<h:outputLabel value="Telefone" />
+						<h:inputText value="#{clienteController.clientePf.telefone}" required="true" id="telefonePF"/>
+					</div>
+
+				</a4j:outputPanel>
+
+				<!-- Pessoa Juridica -->
+				<a4j:outputPanel id="painelPessoaJuridica"
+					rendered="#{!clienteController.flgPessoaFisica}">
+					<div>
+						<h:outputLabel value="Nome Fantasia" />
+						<h:inputText id="nomeFantasia" value="#{clienteController.clientePj.nomeFantasia}"
+							required="true" />
+					</div>
+
+					<div>
+						<h:outputLabel value="Razão Social" />
+						<h:inputText id="razaoSocial" value="#{clienteController.clientePj.razaoSocial}"
+							required="true" />
+					</div>
+
+					<div>
+						<h:outputLabel value="CNPJ" />
+						<h:inputText id="cnpj" value="#{clienteController.clientePj.cnpj}"
+							required="true">
+							<f:converter converterId="javax.faces.BigInteger" />
+						</h:inputText>
+					</div>
+					
+					<div>
+						<h:outputLabel value="Endereço" />
+						<h:inputText id="enderecoPJ" value="#{clienteController.clientePj.endereco}" required="true" />
+					</div>
+					
+					<div>
+						<h:outputLabel value="Telefone" />
+						<h:inputText id="telefonePJ" value="#{clienteController.clientePj.telefone}" required="true" />
+					</div>
+					
+				</a4j:outputPanel>
+
+				<div>
+					<fieldset>
+						<legend>
+							<h:outputLabel value="Informações Bancários" />
+						</legend>
+
+						<div>
+							<h:outputLabel value="Banco" />
+							<h:inputText id="banco" value="#{clienteController.dadosBancario.banco}"
+								required="true" />
+						</div>
+
+						<div>
+							<h:outputLabel value="Agência" />
+							<h:inputText id="agencia" value="#{clienteController.dadosBancario.agencia}"
+								required="true" />
+						</div>
+
+						<div>
+							<h:outputLabel value="Conta" />
+							<h:inputText id="conta" value="#{clienteController.dadosBancario.conta}"
+								required="true" />
+						</div>
+					</fieldset>
+
+				</div>
+
+				<div>
+					<fieldset>
+						<legend>
+							<h:outputLabel value="Dependentes" />
+						</legend>
+
+						<a4j:outputPanel id="painelDependente">
+							<a4j:region>
+								<div>
+									<h:outputLabel value="CNH" />
+									<h:inputText id="cnhDependente" value="#{clienteController.dependente.cnh}" immediate="true" >
+										<f:converter converterId="javax.faces.BigInteger" />
+									</h:inputText>
+								</div>
+	
+								<div>
+									<h:outputLabel value="Nome" />
+									<h:inputText id="nomeDependente" value="#{clienteController.dependente.nome}" immediate="true"/>
+								</div>
+								
+								<div>
+									<a4j:commandButton value="Adicionar"
+										action="#{clienteController.addDependente()}"
+										render="painelDependente" />
+								</div>
+							</a4j:region>
+
+							<rich:dataTable value="#{clienteController.listaDependentes}"
+								var="dependente" id="table" rows="20"
+								rowClasses="odd-row, even-row" styleClass="stable"
+								rendered="#{not empty clienteController.listaDependentes}">
+								<rich:column>
+									<f:facet name="header">
+										<h:outputText value="CNH" />
+									</f:facet>
+									<h:outputText value="#{dependente.cnh}" />
+								</rich:column>
+								<rich:column>
+									<f:facet name="header">
+										<h:outputText value="Nome" />
+									</f:facet>
+									<h:outputText value="#{dependente.nome}" />
+								</rich:column>
+								<rich:column>
+									<f:facet name="header">
+										<h:outputText value="Ação" />
+									</f:facet>
+									<a4j:region>
+									<a4j:commandLink styleClass="no-decor" 
+										render="painelDependente" action="#{clienteController.removeDependente(dependente)}" >
+										<h:graphicImage value="/imagens/delete.gif"
+											alt="deletar" />
+									</a4j:commandLink>
+									</a4j:region>
+								</rich:column>
+
+							</rich:dataTable>
+
+							<rich:jQuery selector=".stable tr:odd"
+								query="addClass('odd-row')" />
+							<rich:jQuery selector=".stable tr:even"
+								query="addClass('even-row')" />
+							<rich:jQuery selector=".stable tr" event="mouseover"
+								query="jQuery(this).addClass('active-row')" />
+							<rich:jQuery selector=".stable tr" event="mouseout"
+								query="jQuery(this).removeClass('active-row')" />
+
+						</a4j:outputPanel>
+
+
+					</fieldset>
+
+				</div>
+
+			</a4j:outputPanel>
+
+			<div>
+				<h:commandButton value="Salvar" action="#{clienteController.salvarCliente}" />
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

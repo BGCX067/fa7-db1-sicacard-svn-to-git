@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Cadastro de posto</title>
+</h:head>
+
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="conteudo">
+		<h:outputText value="Cadastro de posto"></h:outputText>
+		<br />
+		<br />
+		<h:form>
+			<div>
+				<h:outputLabel value="Nome Fantasia" />
+				<h:inputText value="#{postoController.posto.nomeFantasia}"
+					required="true" />
+			</div>
+
+			<div>
+				<h:outputLabel value="Razão Social" />
+				<h:inputText value="#{postoController.posto.razaoSocial}"
+					required="true" />
+			</div>
+
+			<div>
+				<h:outputLabel value="CNPJ" />
+				<h:inputText value="#{postoController.posto.cnpj}" required="true" >
+					<f:converter converterId="javax.faces.BigInteger" />
+				</h:inputText>
+			</div>
+
+			<div>
+				<h:outputLabel value="Telefone" />
+				<h:inputText value="#{postoController.posto.telefone}"
+					required="true" />
+			</div>
+			<div>
+				<fieldset>
+					<legend>
+						<h:outputLabel value="Informações Bancários" />
+					</legend>
+
+					<div>
+						<h:outputLabel value="Banco" />
+						<h:inputText value="#{postoController.posto.dadosBancario.banco}"
+							required="true" />
+					</div>
+
+					<div>
+						<h:outputLabel value="Agência" />
+						<h:inputText
+							value="#{postoController.posto.dadosBancario.agencia}"
+							required="true" />
+					</div>
+
+					<div>
+						<h:outputLabel value="Conta" />
+						<h:inputText value="#{postoController.posto.dadosBancario.conta}"
+							required="true" />
+					</div>
+				</fieldset>
+
+			</div>
+			<div>
+				<h:commandButton value="Salvar" action="#{postoController.salvar}" />
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

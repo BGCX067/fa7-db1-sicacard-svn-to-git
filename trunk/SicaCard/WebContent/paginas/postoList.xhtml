@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+
+
+<h:head>
+	<title>Listagem de Clientes</title>
+</h:head>
+
+<ui:composition template="/template/template.xhtml">
+	<ui:define name="conteudo">
+		<h:outputText value="Lista de Postos"></h:outputText>
+		<br />
+		<br />
+		
+		<h:form id="form">
+			<rich:dataTable value="#{postoController.lista}" var="posto"
+				id="table" rows="20" rowClasses="odd-row, even-row" styleClass="stable">
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Nome Fantasia" />
+					</f:facet>
+					<h:outputText value="#{posto.nomeFantasia}" />
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Razão Social" />
+					</f:facet>
+					<h:outputText value="#{posto.razaoSocial}" />
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="CNPJ" />
+					</f:facet>
+					<h:outputText value="#{posto.cnpj}" />
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Telefone" />
+					</f:facet>
+					<h:outputText value="#{posto.telefone}" />
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Banco " />
+					</f:facet>
+					<h:outputText value="#{posto.dadosBancario.banco}" />
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Agência " />
+					</f:facet>
+					<h:outputText value="#{posto.dadosBancario.agencia}" />
+				</rich:column>
+				<rich:column>
+					<f:facet name="header">
+						<h:outputText value="Conta " />
+					</f:facet>
+					<h:outputText value="#{posto.dadosBancario.conta}" />
+				</rich:column>
+			</rich:dataTable>
+		</h:form>
+
+		<rich:jQuery selector=".stable tr:odd" query="addClass('odd-row')" />
+		<rich:jQuery selector=".stable tr:even" query="addClass('even-row')" />
+		<rich:jQuery selector=".stable tr" event="mouseover" query="jQuery(this).addClass('active-row')" />
+		<rich:jQuery selector=".stable tr" event="mouseout" query="jQuery(this).removeClass('active-row')" />
+
+	</ui:define>
+</ui:composition>
+</html>

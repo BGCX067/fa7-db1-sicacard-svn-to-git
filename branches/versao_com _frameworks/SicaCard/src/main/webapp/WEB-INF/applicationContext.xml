@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+        
+        
+    <!-- PERSISTENCE UNIT -->
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="sicaCard" />
+	</bean>
+
+	<!-- DATA SOURCE -->
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName">
+			<value>java:comp/env/jdbc/ds-sica-card</value>
+		</property>
+	</bean>   
+	
+    <!-- GERÊNCIA AS TRANSAÇÕES -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>    
+    
+    <!-- IDENTIFICA OS BENS ANOTADOS COM @Service, @Repository, @Controller -->
+	<context:component-scan base-package="br.com.sicacard" />
+
+	<!-- HABILITA AS CONFIGURAÇÕES DE BEANS VIA ANOTAÇÕES -->
+	<context:annotation-config />
+
+	<!-- MARCAÇÃO DE TRANSAÇÕES ATRAVES DE ANOTAÇÕES -->
+	<tx:annotation-driven />    
+        
+</beans> 

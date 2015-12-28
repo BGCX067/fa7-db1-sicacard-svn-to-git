@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#paginas#posto.xhtml"
+  PATH="/paginas/posto.xhtml" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#posto.xhtml:0" NAME="item"
+   PATH="/paginas/posto.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#paginas#postoList.xhtml"
+    NAME="output" PATH="/paginas/postoList.xhtml"
+    TARGET="rules:#paginas#postoList.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="error::#paginas#posto.xhtml" NAME="output1"
+    PATH="/paginas/posto.xhtml" TARGET="rules:#paginas#posto.xhtml"
+    TITLE="error" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#postoList.xhtml"
+  PATH="/paginas/postoList.xhtml" SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:" SHAPE="32,161,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::0" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="cadastroPosto::#paginas#posto.xhtml"
+    NAME="output" PATH="/paginas/posto.xhtml"
+    TARGET="rules:#paginas#posto.xhtml" TITLE="cadastroPosto" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="listagemPosto::#paginas#postoList.xhtml"
+    NAME="output1" PATH="/paginas/postoList.xhtml"
+    TARGET="rules:#paginas#postoList.xhtml" TITLE="listagemPosto" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cadastroCliente::#paginas#cliente.xhtml"
+    NAME="output2" PATH="/paginas/cliente.xhtml"
+    TARGET="rules:#paginas#cliente.xhtml" TITLE="cadastroCliente" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="listagemCliente::#paginas#clienteList.xhtml"
+    NAME="output3" PATH="/paginas/clienteList.xhtml"
+    TARGET="rules:#paginas#clienteList.xhtml" TITLE="listagemCliente" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="abastecer::#paginas#abastecimento.xhtml"
+    NAME="output4" PATH="/paginas/abastecimento.xhtml"
+    TARGET="rules:#paginas#abastecimento.xhtml" TITLE="abastecer" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#cliente.xhtml"
+  PATH="/paginas/cliente.xhtml" SHAPE="288,177,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#cliente.xhtml:0" NAME="item"
+   PATH="/paginas/cliente.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#paginas#clienteList.xhtml"
+    NAME="output1" PATH="/paginas/clienteList.xhtml"
+    TARGET="rules:#paginas#clienteList.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="error::#paginas#cliente.xhtml" NAME="output"
+    PATH="/paginas/cliente.xhtml" TARGET="rules:#paginas#cliente.xhtml"
+    TITLE="error" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#paginas#clienteList.xhtml"
+  PATH="/paginas/clienteList.xhtml" SHAPE="32,369,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#paginas#abastecimento.xhtml"
+  PATH="/paginas/abastecimento.xhtml" SHAPE="320,417,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#paginas#abastecimento.xhtml:0" NAME="item"
+   PATH="/paginas/abastecimento.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#paginas#abastecimento.xhtml"
+    NAME="output" PATH="/paginas/abastecimento.xhtml"
+    TARGET="rules:#paginas#abastecimento.xhtml" TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="error::#paginas#abastecimento.xhtml"
+    NAME="output1" PATH="/paginas/abastecimento.xhtml"
+    TARGET="rules:#paginas#abastecimento.xhtml" TITLE="error" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+</PROCESS>
